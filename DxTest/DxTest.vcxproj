@@ -81,6 +81,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DxTest.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="Graphics.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="System.h" />
@@ -88,6 +90,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DxTest.cpp" />
+    <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

@@ -6,18 +6,17 @@ bool System::Initialise()
 	int screenHeight = 0;
 	this->InitialiseWindows(screenWidth, screenHeight);
 
-	// TODO: setup input
+	// setup input
+	this->input.Initialise();
 
-	// TODO: setup graphics
+	this->graphics.Initialise(screenWidth, screenHeight, this->hwnd);
 
 	return true;
 }
 
 void System::Shutdown()
 {
-	// TODO: Shutdown graphics
-
-	// TODO: Shutdown input
+	this->graphics.Shutdown();
 
 	this->ShutdownWindows();
 }
@@ -49,15 +48,16 @@ void System::Run()
 			}
 		}
 
-		// TODO: Check if the user pressed the escape key
+		// Check if the user pressed the escape key
+		if (this->input.IsKeyDown(VK_ESCAPE)) break;
 	}
 }
 
 bool System::Frame() 
 {
-	// TODO: graphics frame processing
+	this->graphics.Frame();
 
-	// TODO: graphics render
+	this->graphics.Render();
 
 	return true;
 }
@@ -67,10 +67,10 @@ LRESULT CALLBACK System::MessageHandler(HWND hwnd, UINT umsg, WPARAM wparam, LPA
 	switch (umsg)
 	{
 	case WM_KEYDOWN:
-		// TODO: Input keydown
+		this->input.KeyDown((unsigned int) wparam);
 		return 0;
 	case WM_KEYUP:
-		// TODO: Input keyup
+		this->input.KeyUp((unsigned int) wparam);
 		return 0;
 	default:
 		return DefWindowProc(hwnd, umsg, wparam, lparam);
